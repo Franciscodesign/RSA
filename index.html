@@ -101,7 +101,7 @@ return probably prime
 
 <p><strong>Code</strong> <br></p>
 
-<div class="highlight highlight-java"><pre><span class="pl-s">public</span> <span class="pl-s">static</span> <span class="pl-st">boolean</span> millerRabin(<span class="pl-stj">BigInteger</span> n, <span class="pl-st">int</span> numValues) { 
+<div class="highlight highlight-java"><pre>       <span class="pl-s">public</span> <span class="pl-s">static</span> <span class="pl-st">boolean</span> millerRabin(<span class="pl-stj">BigInteger</span> n, <span class="pl-st">int</span> numValues) { 
         <span class="pl-stj">BigInteger</span> d <span class="pl-k">=</span> n<span class="pl-k">.</span>subtract(<span class="pl-c1">ONE</span>);
         <span class="pl-st">int</span> s <span class="pl-k">=</span> <span class="pl-c1">0</span>;
         <span class="pl-k">while</span> (d<span class="pl-k">.</span>mod(<span class="pl-c1">TWO</span>)<span class="pl-k">.</span>equals(<span class="pl-c1">ZERO</span>)) {
