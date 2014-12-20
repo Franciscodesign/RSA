@@ -57,22 +57,22 @@ Input:<br>
 
 <p><strong>Encode</strong>:</p>
 
-<div class="highlight highlight-java"><pre>        p <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">GenPrime</span>()<span class="pl-k">.</span>genPrime(bitlen<span class="pl-k">/</span><span class="pl-c1">2</span>);
-        q <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">GenPrime</span>()<span class="pl-k">.</span>genPrime(bitlen<span class="pl-k">/</span><span class="pl-c1">2</span>);
-        n <span class="pl-k">=</span> p<span class="pl-k">.</span>multiply(q);
-        <span class="pl-stj">BigInteger</span> m <span class="pl-k">=</span> (p<span class="pl-k">.</span>subtract(<span class="pl-stj">BigInteger</span><span class="pl-c1"><span class="pl-k">.</span>ONE</span>))<span class="pl-k">.</span>multiply(q
-                .subtract(<span class="pl-stj">BigInteger</span><span class="pl-c1"><span class="pl-k">.</span>ONE</span>)); <span class="pl-c">// m = (p-1) * (q-1)</span>
+<div class="highlight highlight-javascript"><pre>        p <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">GenPrime</span>().genPrime(bitlen/<span class="pl-c1">2</span>);
+        q <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">GenPrime</span>().genPrime(bitlen/<span class="pl-c1">2</span>);
+        n <span class="pl-k">=</span> p.multiply(q);
+        BigInteger m <span class="pl-k">=</span> (p.subtract(BigInteger.ONE)).multiply(q
+                .subtract(BigInteger.ONE)); <span class="pl-c">// m = (p-1) * (q-1)</span>
 
-        e <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-stj">BigInteger</span>(<span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>);
-        <span class="pl-k">while</span> (m<span class="pl-k">.</span>gcd(e)<span class="pl-k">.</span>intValue() <span class="pl-k">&gt;</span> <span class="pl-c1">1</span>) {
-            e <span class="pl-k">=</span> e<span class="pl-k">.</span>add(<span class="pl-k">new</span> <span class="pl-stj">BigInteger</span>(<span class="pl-s1"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>));
+        e <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">BigInteger</span>(<span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>);
+        <span class="pl-k">while</span> (m.gcd(e).intValue() <span class="pl-k">&gt;</span> <span class="pl-c1">1</span>) {
+            e <span class="pl-k">=</span> e.<span class="pl-s3">add</span>(<span class="pl-k">new</span> <span class="pl-en">BigInteger</span>(<span class="pl-s1"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span>));
         }
-        d <span class="pl-k">=</span> e<span class="pl-k">.</span>modInverse(m);</pre></div>
+        d <span class="pl-k">=</span> e.modInverse(m);</pre></div>
 
 <p><strong>Decode</strong> <img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a5.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a5.png" height="20" width="20" align="absmiddle"> <img class="emoji" title=":boom:" alt=":boom:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f4a5.png" height="20" width="20" align="absmiddle"></p>
 
-<div class="highlight highlight-java"><pre>    <span class="pl-s">public</span> <span class="pl-s">synchronized</span> <span class="pl-stj">String</span> decrypt(<span class="pl-stj">String</span> message) {
-        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-stj">String</span>((<span class="pl-k">new</span> <span class="pl-stj">BigInteger</span>(message))<span class="pl-k">.</span>modPow(d, n)<span class="pl-k">.</span>toByteArray());
+<div class="highlight highlight-javascript"><pre>    <span class="pl-s">public</span> synchronized <span class="pl-s3">String</span> decrypt(<span class="pl-s3">String</span> message) {
+        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-en">String</span>((<span class="pl-k">new</span> <span class="pl-en">BigInteger</span>(message)).modPow(d, n).toByteArray());
     }</pre></div>
 
 <hr>
@@ -101,27 +101,27 @@ return probably prime
 
 <p><strong>Code</strong> <br></p>
 
-<div class="highlight highlight-java"><pre>       <span class="pl-s">public</span> <span class="pl-s">static</span> <span class="pl-st">boolean</span> millerRabin(<span class="pl-stj">BigInteger</span> n, <span class="pl-st">int</span> numValues) { 
-        <span class="pl-stj">BigInteger</span> d <span class="pl-k">=</span> n<span class="pl-k">.</span>subtract(<span class="pl-c1">ONE</span>);
-        <span class="pl-st">int</span> s <span class="pl-k">=</span> <span class="pl-c1">0</span>;
-        <span class="pl-k">while</span> (d<span class="pl-k">.</span>mod(<span class="pl-c1">TWO</span>)<span class="pl-k">.</span>equals(<span class="pl-c1">ZERO</span>)) {
+<div class="highlight highlight-javascript"><pre>       <span class="pl-s">public</span> <span class="pl-s">static</span> boolean millerRabin(BigInteger n, int numValues) { 
+        BigInteger d <span class="pl-k">=</span> n.subtract(ONE);
+        int s <span class="pl-k">=</span> <span class="pl-c1">0</span>;
+        <span class="pl-k">while</span> (d.mod(TWO).equals(ZERO)) {
             s<span class="pl-k">++</span>;
-            d <span class="pl-k">=</span> d<span class="pl-k">.</span>divide(<span class="pl-c1">TWO</span>);
+            d <span class="pl-k">=</span> d.divide(TWO);
         }
 
-        <span class="pl-k">for</span> (<span class="pl-st">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> aValues<span class="pl-k">.</span>length; i<span class="pl-k">++</span>) {
-            <span class="pl-k">if</span>(n<span class="pl-k">.</span>compareTo(<span class="pl-stj">BigInteger</span><span class="pl-k">.</span>valueOf(aValues[i]))<span class="pl-k">==</span><span class="pl-c1">0</span>)
+        <span class="pl-k">for</span> (int i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> aValues.<span class="pl-sc">length</span>; i<span class="pl-k">++</span>) {
+            <span class="pl-k">if</span>(n.compareTo(BigInteger.<span class="pl-s3">valueOf</span>(aValues[i]))<span class="pl-k">==</span><span class="pl-c1">0</span>)
                 <span class="pl-k">return</span> <span class="pl-c1">true</span>;
-            <span class="pl-k">if</span> (n<span class="pl-k">.</span>mod(<span class="pl-stj">BigInteger</span><span class="pl-k">.</span>valueOf(aValues[i]))
-                    .compareTo(<span class="pl-stj">BigInteger</span><span class="pl-c1"><span class="pl-k">.</span>ZERO</span>) <span class="pl-k">==</span> <span class="pl-c1">0</span>)
+            <span class="pl-k">if</span> (n.mod(BigInteger.<span class="pl-s3">valueOf</span>(aValues[i]))
+                    .compareTo(BigInteger.ZERO) <span class="pl-k">==</span> <span class="pl-c1">0</span>)
                 <span class="pl-k">return</span> <span class="pl-c1">false</span>;
         }
 
-        <span class="pl-stj">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s1"><span class="pl-pds">"</span>Base Over<span class="pl-pds">"</span></span>);
-        <span class="pl-k">for</span> (<span class="pl-st">int</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> numValues; i<span class="pl-k">++</span>) {
+        System.out.println(<span class="pl-s1"><span class="pl-pds">"</span>Base Over<span class="pl-pds">"</span></span>);
+        <span class="pl-k">for</span> (int i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> numValues; i<span class="pl-k">++</span>) {
             <span class="pl-c">//BigInteger a = BigInteger.valueOf(aValues[i]);// random</span>
-            <span class="pl-stj">BigInteger</span> a <span class="pl-k">=</span>  randomBigInteger(n);
-            <span class="pl-st">boolean</span> r <span class="pl-k">=</span> testPrime(n, a, s, d);
+            BigInteger a <span class="pl-k">=</span>  randomBigInteger(n);
+            boolean r <span class="pl-k">=</span> testPrime(n, a, s, d);
             <span class="pl-k">if</span> (<span class="pl-k">!</span>r) {
                 <span class="pl-k">return</span> <span class="pl-c1">false</span>;
             }
