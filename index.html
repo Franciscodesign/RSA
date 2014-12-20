@@ -48,16 +48,16 @@
 Input:<br>
 </li>
 <li>
-<code>(N,e)</code> RSA public key</li>
+<code>(N,e)</code>   RSA public key</li>
 <li>
-<code>m</code> message representative, an integer between <code>0</code> and <code>N-1</code>
-<br>Output: c ciphertext representative, an integer between <code>0</code> and <code>N-1</code>
+<code>m</code>   message representative, an integer between <code>0</code> and <code>N-1</code>
+<br>Output: <br>c   ciphertext representative, an integer between <code>0</code> and <code>N-1</code>
 </li>
 </ul>
 
 <p><strong>Encode</strong>:</p>
 
-<pre><code>       p = new GenPrime().genPrime(bitlen/2);
+<pre><code>        p = new GenPrime().genPrime(bitlen/2);
         q = new GenPrime().genPrime(bitlen/2);
         n = p.multiply(q);
         BigInteger m = (p.subtract(BigInteger.ONE)).multiply(q
@@ -72,7 +72,7 @@ Input:<br>
 
 <p><strong>Decode</strong></p>
 
-<pre><code>   public synchronized String decrypt(String message) {
+<pre><code>    public synchronized String decrypt(String message) {
         return new String((new BigInteger(message)).modPow(d, n).toByteArray());
     }
 </code></pre>
