@@ -42,21 +42,22 @@
 &gt; Chú ý: Trên thực tế N khoảng 2048 bit là đủ an toàn. Ở đây ta sử dụng số N lớn chỉ nhằm để test hiệu năng chương trình.</li>
 <li>Khóa bí mật <code>(N, d)</code> thỏa mãn <code>d &gt; N^(1/4)</code>.</li>
 <li>Khóa công khai <code>(N, e)</code> thỏa mãn <code>e &gt; 3</code>.
-<br>
-# Thuật toán
-<strong>RSA Encode</strong> <code>((N, e),m)</code>
-Input:</li>
+<br><br>
+<strong>Thuật toán</strong><br>
+<strong>RSA Encode</strong> <code>((N, e),m)</code><br>
+Input:<br>
+</li>
 <li>
-<code>(N,_e_)</code> RSA public key</li>
+<code>(N,e)</code> RSA public key</li>
 <li>
-<code>_m_</code> message representative, an integer between <code>0</code> and <code>N-1</code>
-Output: c ciphertext representative, an integer between <code>0</code> and <code>N-1</code>
+<code>m</code> message representative, an integer between <code>0</code> and <code>N-1</code>
+<br>Output: c ciphertext representative, an integer between <code>0</code> and <code>N-1</code>
 </li>
 </ul>
 
-<p><strong>Code</strong>:</p>
+<p><strong>Encode</strong>:</p>
 
-<pre><code>                p = new GenPrime().genPrime(bitlen/2);
+<pre><code>       p = new GenPrime().genPrime(bitlen/2);
         q = new GenPrime().genPrime(bitlen/2);
         n = p.multiply(q);
         BigInteger m = (p.subtract(BigInteger.ONE)).multiply(q
@@ -71,7 +72,7 @@ Output: c ciphertext representative, an integer between <code>0</code> and <code
 
 <p><strong>Decode</strong></p>
 
-<pre><code>        public synchronized String decrypt(String message) {
+<pre><code>   public synchronized String decrypt(String message) {
         return new String((new BigInteger(message)).modPow(d, n).toByteArray());
     }
 </code></pre>
