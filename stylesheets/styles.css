@@ -178,7 +178,7 @@ hr {
 }
 
 footer {
- /* width:270px;*/
+  width:500px;
   float:left;
   position:absolute;
   background-color: #F2FEEF;
