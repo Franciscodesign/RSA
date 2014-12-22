@@ -2,6 +2,7 @@
 
 body {
   background-image: url("https://raw.githubusercontent.com/Franciscodesign/RSA/gh-pages/images/merry-christmas-words-in-a-pattern_34-49097.jpg");
+  background-repeat: repeat-x;
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
