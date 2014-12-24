@@ -13,15 +13,6 @@
     <![endif]-->
   </head>
   <body>
-  <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=810117602334589&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
     <div class="wrapper">
       <header>
         <h1>Rsa</h1>
@@ -35,25 +26,10 @@
           <li><a href="https://github.com/Franciscodesign/RSA/tarball/master">Download <strong>TAR Ball</strong></a></li>
           <li><a href="https://github.com/Franciscodesign/RSA">View On <strong>GitHub</strong></a></li>
         </ul>
-        
-        <img src="https://raw.githubusercontent.com/Franciscodesign/RSA/gh-pages/images/New_Year_wallpapers_children_santa_claus.jpg">
-		<iframe width="270" height="120" src="http://mp3.zing.vn/embed/song/ZWZCBABI?autostart=true" frameborder="0" allowfullscreen="true"></iframe>
       </header>
       <section>
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-<img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f332.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f332.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":bell:" alt=":bell:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f514.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":bell:" alt=":bell:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f514.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":santa:" alt=":santa:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f385.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":gift:" alt=":gift:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f381.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":bell:" alt=":bell:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f514.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":bell:" alt=":bell:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f514.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f332.png" height="20" width="20" align="absmiddle">
-<img class="emoji" title=":evergreen_tree:" alt=":evergreen_tree:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f332.png" height="20" width="20" align="absmiddle">
-<hr>
-
 
 <h3>
 <a id="progam-1-rsa" class="anchor" href="#progam-1-rsa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progam 1: <strong><a href="http://en.wikipedia.org/wiki/RSA_problem">RSA</a></strong>
@@ -171,14 +147,29 @@ thành <code>kA</code>, <code>kB</code> và <code>kC</code>, tương ứng cho m
 <br>Người dùng <strong>B</strong> (tương ứng <strong>C</strong>) có thể tính <code>k</code> từ file <code>x</code> và khóa bí mật <code>kB</code> (tương ứng <code>kC</code> ). Từ đó
 chị ta giải mã <code>f = D(k, g)</code>.</li>
 </ul>
-		<div class="fb-comments" data-href="http://franciscodesign.github.io/RSA//" data-width="500" data-numposts="5" data-colorscheme="light"></div>
-        <footer>
-            <p>This project is maintained by <a href="https://github.com/Franciscodesign">Franciscodesign</a></p>
-            <p>Pins: <a href="https://www.pinterest.com/franciscokimson/">@franciscokimson</a></p>
-            <p>Twitter: <a href="https://twitter.com/Franciscokimson">@Franciscokimson</a></p>
-            <iframe src="//www.facebook.com/plugins/follow?href=https%3A%2F%2Fwww.facebook.com%2Fkimdinhson.ict&amp;layout=standard&amp;show_faces=true&amp;colorscheme=light&amp;width=500&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px;" allowTransparency="true"></iframe>
-        </footer>
+
+<h2>
+<a id="fk-idea" class="anchor" href="#fk-idea" aria-hidden="true"><span class="octicon octicon-link"></span></a>F#<a href="https://github.com/k" class="user-mention">@k</a> Idea</h2>
+
+<p>Trước tiên, chương trình phải đáp ứng việc quản lý riêng rẽ người dùng và quản lý file bảo mật. Tổ chức như hình dưới <br>
+<img src="https://raw.githubusercontent.com/Franciscodesign/RSA/gh-pages/images/share5.png" alt="class Person + class ShareManager">
+<br>
+Theo đúng yêu cầu, ta có 2 việc phải làm<br>
+1. Mã hóa file với một khóa <code>k</code> bí mật đi kèm bằng giải thuật mã hóa. Ở đây dùng AES-CBC-PKCS5
+2. Khởi tạo người dùng. Bằng việc sinh khóa công khai (dùng OAEP-RSA), khóa bí mật dành riêng cho họ.
+<br>Sơ đồ dưới đây mô tả trình tự chương trình<br>
+<img src="https://raw.githubusercontent.com/Franciscodesign/RSA/gh-pages/images/share_file_2.png" alt="Sơ đồ chương trình">
+<strong>Giải mã</strong>
+Người dùng cần sử dụng khóa của mình để giải mã lấy được khóa <code>k</code>. Sau đó dùng nó để giải mã lại file gốc ban đầu từ thuật toán AES-CBC-PKCS5
+<br>
+Sơ đồ giải mã
+
+<img src="https://raw.githubusercontent.com/Franciscodesign/RSA/gh-pages/images/share_file_3.png" alt="Sơ đồ giải mã"></p>
       </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Franciscodesign">Franciscodesign</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
     

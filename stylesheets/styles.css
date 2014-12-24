@@ -1,8 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Open%20Sans:300italic,700italic,300,700);
+@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
 body {
-  background-image: url("");
-  background-repeat: repeat-x;
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
@@ -99,9 +97,8 @@ img {
 
 header {
   width:270px;
-  padding-bottom: 50px;
   float:left;
-  position: fixed;
+  position:fixed;
 }
 
 header ul {
@@ -180,11 +177,10 @@ hr {
 }
 
 footer {
-  width:500px;
+  width:270px;
   float:left;
-  position:absolute;
-  background-color: #F2FEEF;
-  /* bottom:20px; */
+  position:fixed;
+  bottom:50px;
 }
 
 @media print, screen and (max-width: 960px) {
