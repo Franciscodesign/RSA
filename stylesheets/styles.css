@@ -3,7 +3,7 @@
 body {
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#777;
+  color:#F5F5F5;
   font-weight:300;
 }
 
@@ -178,6 +178,7 @@ hr {
 }
 
 footer {
+  background-color: #D5F7DE
   width:270px;
   float:left;
   position:fixed;
